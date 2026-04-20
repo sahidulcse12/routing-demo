@@ -19,4 +19,20 @@ describe('About', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should expose company name', () => {
+    expect(component.companyName).toBe('Angular Learning App');
+  });
+
+  it('should return about information', () => {
+    expect(component.getInfo()).toContain('learning Angular Routing');
+  });
+
+  it('should render about content', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.textContent).toContain('About');
+    expect(compiled.textContent).toContain('Angular Learning App');
+  });
 });
