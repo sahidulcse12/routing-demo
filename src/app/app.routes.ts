@@ -8,6 +8,7 @@ import { User } from './pages/user/user';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Overview } from './pages/dashboard/overview/overview';
 import { Settings } from './pages/dashboard/settings/settings';
+import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: Dashboard,
+    canActivate:[authGuard],
     children: [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
       { path: 'overview', component: Overview },
